@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="stl" nsURI="http://www.example.org/stl" nsPrefix="stl">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductionLine">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="areas" upperBound="-1"
+        eType="#//Area" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemtype" upperBound="-1"
+        eType="#//ItemType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemType" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//NamedElement #//Costs">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//Service"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputslots" upperBound="-1"
+        eType="#//InputSlot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputslots" upperBound="-1"
+        eType="#//OutputSlot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//NamedElement #//Costs">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reliability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//NamedParameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputSlot"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputSlot"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conveyor" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TurnTable" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Buffer" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemGenerator" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemtypes" upperBound="-1"
+        eType="#//ItemType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WasteStore" eSuperTypes="#//Store"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductStore" eSuperTypes="#//Store"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Store" abstract="true" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Costs" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedParameter"/>
+</ecore:EPackage>

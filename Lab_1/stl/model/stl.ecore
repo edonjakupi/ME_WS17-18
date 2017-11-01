@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="stl" nsURI="http://www.example.org/stl" nsPrefix="stl">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ProductionLine">
     <eStructuralFeatures xsi:type="ecore:EReference" name="areas" upperBound="-1"
         eType="#//Area" containment="true"/>
@@ -12,12 +20,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="#//Component"/>
+        eType="#//Component" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="connector" upperBound="-1"
         eType="#//Connector" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//NamedElement #//Costs">
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
@@ -26,43 +34,107 @@
         eType="#//Slot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connector">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="SameItemTypes SameAreas"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="SameItemTypes" value="self.inputSlot.itemtype = self.outputSlot.itemtype"/>
+      <details key="SameAreas" value="self.Area = self.outputSlot.Component.Area"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputSlot" lowerBound="1"
-        eType="#//Slot" eOpposite="#//Slot/SourceConnector"/>
+        eType="#//Slot" eOpposite="#//Slot/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputSlot" lowerBound="1"
-        eType="#//Slot" eOpposite="#//Slot/TargetConnector"/>
+        eType="#//Slot" eOpposite="#//Slot/target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Service" eSuperTypes="#//NamedElement #//Costs">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reliability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="AllParamsDiffNames"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="AllParamsDiffNames" value="self.parameters -> select(e: NamedParameter | e.oclIsTypeOf(NamedParameter))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-> forAll(e1,e2 | e1 &lt;> e2 implies&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;e1.oclAsType(NamedParameter).name &lt;>&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;e2.oclAsType(NamedParameter).name&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reliability" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processingTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//NamedParameter"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputSlot"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OutputSlot"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Conveyor" eSuperTypes="#//Component"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TurnTable" eSuperTypes="#//Component"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//Component"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Buffer" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conveyor" eSuperTypes="#//Component">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OneInputSlotForConveyor OneOutputSlotForConveyor"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OneInputSlotForConveyor" value="self.slot.source -> size()=1"/>
+      <details key="OneOutputSlotForConveyor" value="self.slot.target -> size()=1"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TurnTable" eSuperTypes="#//Component">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="InputSlotSizeTurnTable OneOutputSlotSizeTurnTable"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="InputSlotSizeTurnTable" value="self.slot.source -> size()>=1"/>
+      <details key="OneOutputSlotSizeTurnTable" value="self.slot.target -> size()>=1"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//Component">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="InputSlotSizeMachine OutputSlotSizeMachine"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="InputSlotSizeMachine" value="self.slot.source -> size()>=1"/>
+      <details key="OutputSlotSizeMachine" value="self.slot.target -> size()>=1"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Buffer" eSuperTypes="#//Component">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OneInputSlotForBuffer OneOutputSlotForBuffer"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OneInputSlotForBuffer" value="self.slot.source -> size()=1"/>
+      <details key="OneOutputSlotForBuffer" value="self.slot.target -> size()=1"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ItemGenerator" eSuperTypes="#//Component">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="NoInputSlotForItemGenerator OneOutputSlotForItemGenerator OutputSlotSameItemType"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="NoInputSlotForItemGenerator" value="self.slot.source -> size()=0"/>
+      <details key="OneOutputSlotForItemGenerator" value="self.slot.target -> size()=1"/>
+      <details key="OutputSlotSameItemType" value="self.itemtypes = self.slot.itemtype"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itemtypes" lowerBound="1"
         eType="#//ItemType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WasteStore" eSuperTypes="#//Store"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProductStore" eSuperTypes="#//Store"/>
   <eClassifiers xsi:type="ecore:EClass" name="Store" abstract="true" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="OneInputSlotForStore NoOutputSlotForStore"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="OneInputSlotForStore" value="self.slot.source -> size()=1"/>
+      <details key="NoOutputSlotForStore" value="self.slot.target -> size()=0"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Costs" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedParameter" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Slot" abstract="true" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Slot" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="itemtype" lowerBound="1"
         eType="#//ItemType" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="SourceConnector" eType="#//Connector"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Connector"
         eOpposite="#//Connector/inputSlot"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="TargetConnector" upperBound="-1"
-        eType="#//Connector" eOpposite="#//Connector/outputSlot"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
+        eType="#//Connector" eOpposite="#//Connector/outputSlot">
+      <eAnnotations source="http://www.eclipse.org/OCL/Collection">
+        <details key="nullFree" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="NewDataType1" instanceTypeName="newDataType1"/>
 </ecore:EPackage>

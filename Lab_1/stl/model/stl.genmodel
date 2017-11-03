@@ -8,7 +8,6 @@
   <foreignModel>stl.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Stl" disposableProviderFactory="true" ecorePackage="stl.ecore#/">
-    <genDataTypes ecoreDataType="stl.ecore#//NewDataType1"/>
     <genClasses ecoreClass="stl.ecore#//ProductionLine">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//ProductionLine/areas"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//ProductionLine/itemtype"/>
@@ -19,31 +18,32 @@
     <genClasses ecoreClass="stl.ecore#//Area">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Area/components"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Area/connector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//Area/service"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//Area/namedparameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//Area/slot"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stl.ecore#//NamedElement/name"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//Component">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Component/services"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference stl.ecore#//Component/slot"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Component/slot"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//Connector">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Connector/inputSlot"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Connector/outputSlot"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Connector/targetComponent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Connector/sourceComponent"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//Service">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stl.ecore#//Service/reliability"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stl.ecore#//Service/processingTime"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Service/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Service/namedparameter"/>
     </genClasses>
-    <genClasses ecoreClass="stl.ecore#//InputSlot"/>
-    <genClasses ecoreClass="stl.ecore#//OutputSlot"/>
     <genClasses ecoreClass="stl.ecore#//Conveyor"/>
     <genClasses ecoreClass="stl.ecore#//TurnTable"/>
     <genClasses ecoreClass="stl.ecore#//Machine"/>
     <genClasses ecoreClass="stl.ecore#//Buffer"/>
     <genClasses ecoreClass="stl.ecore#//ItemGenerator">
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//ItemGenerator/itemtypes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//ItemGenerator/itemtypes"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//WasteStore"/>
     <genClasses ecoreClass="stl.ecore#//ProductStore"/>
@@ -54,10 +54,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stl.ecore#//Costs/cost"/>
     </genClasses>
     <genClasses ecoreClass="stl.ecore#//NamedParameter"/>
-    <genClasses image="false" ecoreClass="stl.ecore#//Slot">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/itemtype"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/SourceConnector"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/TargetConnector"/>
+    <genClasses ecoreClass="stl.ecore#//Slot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/itemtype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/incomingConnector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stl.ecore#//Slot/outgoingConnector"/>
     </genClasses>
+    <genClasses ecoreClass="stl.ecore#//Input"/>
+    <genClasses ecoreClass="stl.ecore#//Output"/>
+    <genClasses ecoreClass="stl.ecore#//InputSlot"/>
+    <genClasses ecoreClass="stl.ecore#//OutputSlot"/>
   </genPackages>
 </genmodel:GenModel>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stl:ProductionLine
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:stl="http://www.example.org/stl"
+    xsi:schemaLocation="http://www.example.org/stl ../stl/model/stl.ecore">
+  <areas name="a">
+    <components
+        xsi:type="stl:ItemGenerator"
+        name="b"
+        slot="//@areas.0/@slot.0 //@areas.0/@slot.1"
+        itemtypes="//@itemtype.0"/>
+    <slot xsi:type="stl:InputSlot"
+        name="c"
+        itemtype="//@itemtype.0"/>
+    <slot xsi:type="stl:OutputSlot"
+        name="d"
+        itemtype="//@itemtype.0"/>
+  </areas>
+  <itemtype
+      name="e"/>
+</stl:ProductionLine>

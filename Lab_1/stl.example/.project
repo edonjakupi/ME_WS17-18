@@ -3,6 +3,9 @@
 	<name>stl.example</name>
 	<comment></comment>
 	<projects>
+		<project>stl</project>
+		<project>stl.edit</project>
+		<project>stl.editor</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>

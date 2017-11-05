@@ -9,26 +9,34 @@
     <components
         xsi:type="stl:ItemGenerator"
         name="RawShelfProducer"
+        slot="//@areas.0/@slot.0"
         itemtypes="//@itemtype.0"/>
     <components
         xsi:type="stl:Conveyor"
-        name="ToBufferConveyor"/>
+        name="ToBufferConveyor"
+        slot="//@areas.0/@slot.8 //@areas.0/@slot.1"/>
+    <components
+        xsi:type="stl:Conveyor"
+        name="ToShelfStoreConveyor"
+        slot="//@areas.0/@slot.11 //@areas.0/@slot.6"/>
+    <components
+        xsi:type="stl:Conveyor"
+        name="ToWasteStoreConveyor"
+        slot="//@areas.0/@slot.13 //@areas.0/@slot.7"/>
     <components
         xsi:type="stl:Buffer"
-        name="Buffer"/>
+        name="Buffer"
+        slot="//@areas.0/@slot.9 //@areas.0/@slot.2"/>
     <components
         xsi:type="stl:Machine"
         name="SawingMachine"
-        services="//@areas.0/@service.0"/>
-    <components
-        xsi:type="stl:Conveyor"
-        name="ToShelfStoreConveyor"/>
+        cost="1000"
+        services="//@areas.0/@service.0"
+        slot="//@areas.0/@slot.10 //@areas.0/@slot.3 //@areas.0/@slot.4"/>
     <components
         xsi:type="stl:TurnTable"
-        name="TurnTable"/>
-    <components
-        xsi:type="stl:Conveyor"
-        name="ToWasteStoreConveyor"/>
+        name="TurnTable"
+        slot="//@areas.0/@slot.12 //@areas.0/@slot.5"/>
     <connector
         targetComponent="//@areas.0/@slot.8"
         sourceComponent="//@areas.0/@slot.0"/>
@@ -37,82 +45,101 @@
         sourceComponent="//@areas.0/@slot.1"/>
     <connector
         targetComponent="//@areas.0/@slot.10"
-        sourceComponent="//@areas.0/@slot.6"/>
-    <connector
-        targetComponent="//@areas.0/@slot.11"
         sourceComponent="//@areas.0/@slot.2"/>
     <connector
-        targetComponent="//@areas.0/@slot.12"
+        targetComponent="//@areas.0/@slot.11"
         sourceComponent="//@areas.0/@slot.3"/>
+    <connector
+        targetComponent="//@areas.0/@slot.12"
+        sourceComponent="//@areas.0/@slot.4"/>
     <connector
         targetComponent="//@areas.0/@slot.13"
         sourceComponent="//@areas.0/@slot.5"/>
     <connector
         targetComponent="//@areas.1/@slot.0"
-        sourceComponent="//@areas.0/@slot.4"/>
+        sourceComponent="//@areas.0/@slot.6"/>
     <connector
         targetComponent="//@areas.1/@slot.1"
         sourceComponent="//@areas.0/@slot.7"/>
     <service
         name="Saw"
+        cost="5"
         reliability="0.99"
         processingTime="30.0"/>
     <slot xsi:type="stl:OutputSlot"
         name="RawShelfProducer_Output"
-        outgoingSlot="//@areas.0/@connector.0"/>
+        itemtype="//@itemtype.0"
+        outgoingConnector="//@areas.0/@connector.0"/>
     <slot xsi:type="stl:OutputSlot"
         name="ToBufferConveyor_Output"
-        outgoingSlot="//@areas.0/@connector.1"/>
-    <slot xsi:type="stl:OutputSlot"
-        name="SawingMachine_ProductOutput"
-        outgoingSlot="//@areas.0/@connector.3"/>
-    <slot xsi:type="stl:OutputSlot"
-        name="SawingMachine_WasteOutput"
-        outgoingSlot="//@areas.0/@connector.4"/>
-    <slot xsi:type="stl:OutputSlot"
-        name="ToShelfStoreConveyor_StoreOutput"
-        outgoingSlot="//@areas.0/@connector.6"/>
-    <slot xsi:type="stl:OutputSlot"
-        name="TurnTable_WasteOutput"
-        outgoingSlot="//@areas.0/@connector.5"/>
+        itemtype="//@itemtype.0"
+        outgoingConnector="//@areas.0/@connector.1"/>
     <slot xsi:type="stl:OutputSlot"
         name="Buffer_Output"
-        outgoingSlot="//@areas.0/@connector.2"/>
+        itemtype="//@itemtype.0"
+        outgoingConnector="//@areas.0/@connector.2"/>
     <slot xsi:type="stl:OutputSlot"
-        name="ToWasteStoreConveyor_WasteOutput"
-        outgoingSlot="//@areas.0/@connector.7"/>
+        name="SawingMachine_ProductOutput"
+        itemtype="//@itemtype.1"
+        outgoingConnector="//@areas.0/@connector.3"/>
+    <slot xsi:type="stl:OutputSlot"
+        name="SawingMachine_WasteOutput"
+        itemtype="//@itemtype.2"
+        outgoingConnector="//@areas.0/@connector.4"/>
+    <slot xsi:type="stl:OutputSlot"
+        name="TurnTable_Output"
+        itemtype="//@itemtype.2"
+        outgoingConnector="//@areas.0/@connector.5"/>
+    <slot xsi:type="stl:OutputSlot"
+        name="ToShelfStoreConveyor_Output"
+        itemtype="//@itemtype.1"
+        outgoingConnector="//@areas.0/@connector.6"/>
+    <slot xsi:type="stl:OutputSlot"
+        name="ToWasteStoreConveyor_Output"
+        itemtype="//@itemtype.2"
+        outgoingConnector="//@areas.0/@connector.7"/>
     <slot xsi:type="stl:InputSlot"
         name="ToBufferConveyor_Input"
-        incomingSlot="//@areas.0/@connector.0"/>
+        itemtype="//@itemtype.0"
+        incomingConnetor="//@areas.0/@connector.0"/>
     <slot xsi:type="stl:InputSlot"
         name="Buffer_Input"
-        incomingSlot="//@areas.0/@connector.1"/>
+        itemtype="//@itemtype.0"
+        incomingConnetor="//@areas.0/@connector.1"/>
     <slot xsi:type="stl:InputSlot"
         name="SawingMachine_Input"
-        incomingSlot="//@areas.0/@connector.2"/>
+        itemtype="//@itemtype.0"
+        incomingConnetor="//@areas.0/@connector.2"/>
     <slot xsi:type="stl:InputSlot"
-        name="ToShelfStoreConveyor_StoreInput"
-        incomingSlot="//@areas.0/@connector.3"/>
+        name="ToShelfStoreConveyor_Input"
+        itemtype="//@itemtype.1"
+        incomingConnetor="//@areas.0/@connector.3"/>
     <slot xsi:type="stl:InputSlot"
-        name="TurnTable_WasteInput"
-        incomingSlot="//@areas.0/@connector.4"/>
+        name="TurnTable_Input"
+        itemtype="//@itemtype.2"
+        incomingConnetor="//@areas.0/@connector.4"/>
     <slot xsi:type="stl:InputSlot"
-        name="ToWasteStoreConveyor_WasteInput"
-        incomingSlot="//@areas.0/@connector.5"/>
+        name="ToWasteStoreConveyor_Input"
+        itemtype="//@itemtype.2"
+        incomingConnetor="//@areas.0/@connector.5"/>
   </areas>
   <areas name="StoreArea">
     <components
         xsi:type="stl:ProductStore"
-        name="ShelfStore"/>
+        name="ShelfStore"
+        slot="//@areas.1/@slot.0"/>
     <components
         xsi:type="stl:WasteStore"
-        name="WoodWasteStore"/>
+        name="WasteStore"
+        slot="//@areas.1/@slot.1"/>
     <slot xsi:type="stl:InputSlot"
         name="ShelfStore_Input"
-        incomingSlot="//@areas.0/@connector.6"/>
+        itemtype="//@itemtype.1"
+        incomingConnetor="//@areas.0/@connector.6"/>
     <slot xsi:type="stl:InputSlot"
-        name="WasteStore_Input"
-        incomingSlot="//@areas.0/@connector.7"/>
+        name="WoodWasteStore_Input"
+        itemtype="//@itemtype.2"
+        incomingConnetor="//@areas.0/@connector.7"/>
   </areas>
   <itemtype
       name="RawShelf"

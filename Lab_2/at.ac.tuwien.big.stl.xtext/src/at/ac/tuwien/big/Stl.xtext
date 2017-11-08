@@ -5,8 +5,68 @@ import "http://www.big.tuwien.ac.at/Stl"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 System returns System:
-	'system' name=ID 	
-	;
+	'system' name=ID '{'	
+	'}';
+	
+Area returns Area:
+	'area' name=ID
+;
+
+ItemType returns ItemType:
+	'item' name=ID '=' description=EString
+;
+
+Connector returns Connector:
+	entry=[Slot|QualifiedName] '>' exit=[Slot|QualifiedName]
+;
+
+Component returns Component:
+	ItemGenerator | Store | Buffer | Conveyor | Machine | TurnTable
+;
+
+Service returns Service:
+	'service' name=ID '(cost='cost=EInt',reliability='reliability=EDouble',processingTime='processingTime=EInt')'
+;
+
+Parameter returns Parameter:
+	'input' name=ID
+;
+
+Slot returns Slot:
+	name=ID ':' requiredType=[ItemType|QualifiedName]
+;
+
+ItemGenerator returns ItemGenerator:
+	'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost='cost=EInt')' 
+;
+
+Store returns Store:
+	ProductStore | WasteStore
+;
+
+ProductStore returns ProductStore:
+	'productStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt')'
+;
+
+WasteStore returns WasteStore:
+	'wasteStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt')'
+;
+
+Buffer returns Buffer:
+	'buffer' name=ID '(cost='cost=EInt')'
+;
+
+Conveyor returns Conveyor:
+	'conveyor' name=ID '(cost='cost=EInt')'
+;
+
+Machine returns Machine:
+	'machine' name=ID '(cost='cost=EInt')' 
+;
+
+TurnTable returns TurnTable:
+	'turntable' name=ID '(cost='cost=EInt')' 
+;
 
 QualifiedName returns ecore::EString:
 	ID (=> '.' ID)*;

@@ -5,11 +5,16 @@ import "http://www.big.tuwien.ac.at/Stl"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 System returns System:
-	'system' name=ID '{'	
+	'system' name=ID '{'
+	(itemTypes+=ItemType)*
+	(areas+=Area)*
 	'}';
 	
 Area returns Area:
-	'area' name=ID
+	'area' name=ID '{'
+		(components+=Component)*
+		(connectors+=Connector)*
+	'}'
 ;
 
 ItemType returns ItemType:
@@ -25,7 +30,10 @@ Component returns Component:
 ;
 
 Service returns Service:
-	'service' name=ID '(cost='cost=EInt',reliability='reliability=EDouble',processingTime='processingTime=EInt')'
+	('service' name=ID '(cost='cost=EInt',reliability='reliability=EDouble',processingTime='processingTime=EInt')') |
+	('service' name=ID '(cost='cost=EInt',reliability='reliability=EDouble',processingTime='processingTime=EInt'){'
+		(parameters+=Parameter)+
+	'}')
 ;
 
 Parameter returns Parameter:
@@ -37,7 +45,10 @@ Slot returns Slot:
 ;
 
 ItemGenerator returns ItemGenerator:
-	'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost='cost=EInt')' 
+	'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost='cost=EInt'){'
+		'output' outputSlots+=Slot
+		(services+=Service)*
+	'}'
 ;
 
 Store returns Store:
@@ -45,27 +56,49 @@ Store returns Store:
 ;
 
 ProductStore returns ProductStore:
-	'productStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt')'
+	'productStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt'){'
+		'input' inputSlots+=Slot
+		(services+=Service)*
+	'}'
 ;
 
 WasteStore returns WasteStore:
-	'wasteStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt')'
+	'wasteStore' name=ID '(cost='cost=EInt',capacity='capacity=EInt'){'
+		'input' inputSlots+=Slot
+		(services+=Service)*
+	'}'
 ;
 
 Buffer returns Buffer:
-	'buffer' name=ID '(cost='cost=EInt')'
+	'buffer' name=ID '(cost='cost=EInt'){'
+		'input' inputSlots+=Slot
+		'output' outputSlots+=Slot
+		(services+=Service)*
+	'}'
 ;
 
 Conveyor returns Conveyor:
-	'conveyor' name=ID '(cost='cost=EInt')'
+	'conveyor' name=ID '(cost='cost=EInt'){'
+		'input' inputSlots+=Slot
+		'output' outputSlots+=Slot
+		(services+=Service)*
+	'}'
 ;
 
 Machine returns Machine:
-	'machine' name=ID '(cost='cost=EInt')' 
+	'machine' name=ID '(cost='cost=EInt'){'
+		('input' inputSlots+=Slot)+
+		('output' outputSlots+=Slot)+
+		(services+=Service)*
+	'}' 
 ;
 
 TurnTable returns TurnTable:
-	'turntable' name=ID '(cost='cost=EInt')' 
+	'turntable' name=ID '(cost='cost=EInt'){'
+		('input' inputSlots+=Slot)+
+		('output' outputSlots+=Slot)+
+		(services+=Service)*
+	'}' 
 ;
 
 QualifiedName returns ecore::EString:

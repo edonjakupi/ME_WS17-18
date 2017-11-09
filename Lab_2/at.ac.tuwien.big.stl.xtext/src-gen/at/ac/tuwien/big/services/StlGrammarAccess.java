@@ -8,6 +8,7 @@ import com.google.inject.Singleton;
 import java.util.List;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -27,23 +28,997 @@ public class StlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSystemKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cItemTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cItemTypesItemTypeParserRuleCall_3_0 = (RuleCall)cItemTypesAssignment_3.eContents().get(0);
+		private final Assignment cAreasAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAreasAreaParserRuleCall_4_0 = (RuleCall)cAreasAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//System:
-		//	'system' name=EString;
+		//	'system' name=ID '{'
+		//	itemTypes+=ItemType*
+		//	areas+=Area*
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'system' name=EString
+		//'system' name=ID '{' itemTypes+=ItemType* areas+=Area* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'system'
 		public Keyword getSystemKeyword_0() { return cSystemKeyword_0; }
 		
-		//name=EString
+		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//itemTypes+=ItemType*
+		public Assignment getItemTypesAssignment_3() { return cItemTypesAssignment_3; }
+		
+		//ItemType
+		public RuleCall getItemTypesItemTypeParserRuleCall_3_0() { return cItemTypesItemTypeParserRuleCall_3_0; }
+		
+		//areas+=Area*
+		public Assignment getAreasAssignment_4() { return cAreasAssignment_4; }
+		
+		//Area
+		public RuleCall getAreasAreaParserRuleCall_4_0() { return cAreasAreaParserRuleCall_4_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class AreaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Area");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAreaKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cComponentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cComponentsComponentParserRuleCall_3_0 = (RuleCall)cComponentsAssignment_3.eContents().get(0);
+		private final Assignment cConnectorsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cConnectorsConnectorParserRuleCall_4_0 = (RuleCall)cConnectorsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//Area:
+		//	'area' name=ID '{'
+		//	components+=Component*
+		//	connectors+=Connector*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'area' name=ID '{' components+=Component* connectors+=Connector* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'area'
+		public Keyword getAreaKeyword_0() { return cAreaKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//components+=Component*
+		public Assignment getComponentsAssignment_3() { return cComponentsAssignment_3; }
+		
+		//Component
+		public RuleCall getComponentsComponentParserRuleCall_3_0() { return cComponentsComponentParserRuleCall_3_0; }
+		
+		//connectors+=Connector*
+		public Assignment getConnectorsAssignment_4() { return cConnectorsAssignment_4; }
+		
+		//Connector
+		public RuleCall getConnectorsConnectorParserRuleCall_4_0() { return cConnectorsConnectorParserRuleCall_4_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class ItemTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.ItemType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cItemKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDescriptionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDescriptionEStringParserRuleCall_3_0 = (RuleCall)cDescriptionAssignment_3.eContents().get(0);
+		
+		//ItemType:
+		//	'item' name=ID '=' description=EString;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'item' name=ID '=' description=EString
+		public Group getGroup() { return cGroup; }
+		
+		//'item'
+		public Keyword getItemKeyword_0() { return cItemKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
+		
+		//description=EString
+		public Assignment getDescriptionAssignment_3() { return cDescriptionAssignment_3; }
+		
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getDescriptionEStringParserRuleCall_3_0() { return cDescriptionEStringParserRuleCall_3_0; }
+	}
+	public class ConnectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Connector");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cEntryAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cEntrySlotCrossReference_0_0 = (CrossReference)cEntryAssignment_0.eContents().get(0);
+		private final RuleCall cEntrySlotQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEntrySlotCrossReference_0_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExitAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cExitSlotCrossReference_2_0 = (CrossReference)cExitAssignment_2.eContents().get(0);
+		private final RuleCall cExitSlotQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cExitSlotCrossReference_2_0.eContents().get(1);
+		
+		//Connector:
+		//	entry=[Slot|QualifiedName] '>' exit=[Slot|QualifiedName];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//entry=[Slot|QualifiedName] '>' exit=[Slot|QualifiedName]
+		public Group getGroup() { return cGroup; }
+		
+		//entry=[Slot|QualifiedName]
+		public Assignment getEntryAssignment_0() { return cEntryAssignment_0; }
+		
+		//[Slot|QualifiedName]
+		public CrossReference getEntrySlotCrossReference_0_0() { return cEntrySlotCrossReference_0_0; }
+		
+		//QualifiedName
+		public RuleCall getEntrySlotQualifiedNameParserRuleCall_0_0_1() { return cEntrySlotQualifiedNameParserRuleCall_0_0_1; }
+		
+		//'>'
+		public Keyword getGreaterThanSignKeyword_1() { return cGreaterThanSignKeyword_1; }
+		
+		//exit=[Slot|QualifiedName]
+		public Assignment getExitAssignment_2() { return cExitAssignment_2; }
+		
+		//[Slot|QualifiedName]
+		public CrossReference getExitSlotCrossReference_2_0() { return cExitSlotCrossReference_2_0; }
+		
+		//QualifiedName
+		public RuleCall getExitSlotQualifiedNameParserRuleCall_2_0_1() { return cExitSlotQualifiedNameParserRuleCall_2_0_1; }
+	}
+	public class ComponentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Component");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cItemGeneratorParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cStoreParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBufferParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cConveyorParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cMachineParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cTurnTableParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		
+		//Component:
+		//	ItemGenerator | Store | Buffer | Conveyor | Machine | TurnTable;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ItemGenerator | Store | Buffer | Conveyor | Machine | TurnTable
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ItemGenerator
+		public RuleCall getItemGeneratorParserRuleCall_0() { return cItemGeneratorParserRuleCall_0; }
+		
+		//Store
+		public RuleCall getStoreParserRuleCall_1() { return cStoreParserRuleCall_1; }
+		
+		//Buffer
+		public RuleCall getBufferParserRuleCall_2() { return cBufferParserRuleCall_2; }
+		
+		//Conveyor
+		public RuleCall getConveyorParserRuleCall_3() { return cConveyorParserRuleCall_3; }
+		
+		//Machine
+		public RuleCall getMachineParserRuleCall_4() { return cMachineParserRuleCall_4; }
+		
+		//TurnTable
+		public RuleCall getTurnTableParserRuleCall_5() { return cTurnTableParserRuleCall_5; }
+	}
+	public class ServiceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Service");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cServiceKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cCostKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cCostAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_0_3_0 = (RuleCall)cCostAssignment_0_3.eContents().get(0);
+		private final Keyword cReliabilityKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final Assignment cReliabilityAssignment_0_5 = (Assignment)cGroup_0.eContents().get(5);
+		private final RuleCall cReliabilityEDoubleParserRuleCall_0_5_0 = (RuleCall)cReliabilityAssignment_0_5.eContents().get(0);
+		private final Keyword cProcessingTimeKeyword_0_6 = (Keyword)cGroup_0.eContents().get(6);
+		private final Assignment cProcessingTimeAssignment_0_7 = (Assignment)cGroup_0.eContents().get(7);
+		private final RuleCall cProcessingTimeEIntParserRuleCall_0_7_0 = (RuleCall)cProcessingTimeAssignment_0_7.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_0_8 = (Keyword)cGroup_0.eContents().get(8);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cServiceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
+		private final Keyword cCostKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cCostAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_1_3_0 = (RuleCall)cCostAssignment_1_3.eContents().get(0);
+		private final Keyword cReliabilityKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Assignment cReliabilityAssignment_1_5 = (Assignment)cGroup_1.eContents().get(5);
+		private final RuleCall cReliabilityEDoubleParserRuleCall_1_5_0 = (RuleCall)cReliabilityAssignment_1_5.eContents().get(0);
+		private final Keyword cProcessingTimeKeyword_1_6 = (Keyword)cGroup_1.eContents().get(6);
+		private final Assignment cProcessingTimeAssignment_1_7 = (Assignment)cGroup_1.eContents().get(7);
+		private final RuleCall cProcessingTimeEIntParserRuleCall_1_7_0 = (RuleCall)cProcessingTimeAssignment_1_7.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_1_8 = (Keyword)cGroup_1.eContents().get(8);
+		private final Assignment cParametersAssignment_1_9 = (Assignment)cGroup_1.eContents().get(9);
+		private final RuleCall cParametersParameterParserRuleCall_1_9_0 = (RuleCall)cParametersAssignment_1_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_10 = (Keyword)cGroup_1.eContents().get(10);
+		
+		//Service:
+		//	'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt ')' |
+		//	'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt '){'
+		//	parameters+=Parameter+
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt ')' |
+		//'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt '){'
+		//parameters+=Parameter+ '}'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'service'
+		public Keyword getServiceKeyword_0_0() { return cServiceKeyword_0_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_0_2() { return cCostKeyword_0_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_0_3() { return cCostAssignment_0_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_0_3_0() { return cCostEIntParserRuleCall_0_3_0; }
+		
+		//',reliability='
+		public Keyword getReliabilityKeyword_0_4() { return cReliabilityKeyword_0_4; }
+		
+		//reliability=EDouble
+		public Assignment getReliabilityAssignment_0_5() { return cReliabilityAssignment_0_5; }
+		
+		//EDouble
+		public RuleCall getReliabilityEDoubleParserRuleCall_0_5_0() { return cReliabilityEDoubleParserRuleCall_0_5_0; }
+		
+		//',processingTime='
+		public Keyword getProcessingTimeKeyword_0_6() { return cProcessingTimeKeyword_0_6; }
+		
+		//processingTime=EInt
+		public Assignment getProcessingTimeAssignment_0_7() { return cProcessingTimeAssignment_0_7; }
+		
+		//EInt
+		public RuleCall getProcessingTimeEIntParserRuleCall_0_7_0() { return cProcessingTimeEIntParserRuleCall_0_7_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_8() { return cRightParenthesisKeyword_0_8; }
+		
+		//'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt '){'
+		//parameters+=Parameter+ '}'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'service'
+		public Keyword getServiceKeyword_1_0() { return cServiceKeyword_1_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_1_2() { return cCostKeyword_1_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_1_3() { return cCostAssignment_1_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_1_3_0() { return cCostEIntParserRuleCall_1_3_0; }
+		
+		//',reliability='
+		public Keyword getReliabilityKeyword_1_4() { return cReliabilityKeyword_1_4; }
+		
+		//reliability=EDouble
+		public Assignment getReliabilityAssignment_1_5() { return cReliabilityAssignment_1_5; }
+		
+		//EDouble
+		public RuleCall getReliabilityEDoubleParserRuleCall_1_5_0() { return cReliabilityEDoubleParserRuleCall_1_5_0; }
+		
+		//',processingTime='
+		public Keyword getProcessingTimeKeyword_1_6() { return cProcessingTimeKeyword_1_6; }
+		
+		//processingTime=EInt
+		public Assignment getProcessingTimeAssignment_1_7() { return cProcessingTimeAssignment_1_7; }
+		
+		//EInt
+		public RuleCall getProcessingTimeEIntParserRuleCall_1_7_0() { return cProcessingTimeEIntParserRuleCall_1_7_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_1_8() { return cRightParenthesisLeftCurlyBracketKeyword_1_8; }
+		
+		//parameters+=Parameter+
+		public Assignment getParametersAssignment_1_9() { return cParametersAssignment_1_9; }
+		
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_1_9_0() { return cParametersParameterParserRuleCall_1_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_1_10() { return cRightCurlyBracketKeyword_1_10; }
+	}
+	public class ParameterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Parameter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInputKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//Parameter:
+		//	'input' name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'input' name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//'input'
+		public Keyword getInputKeyword_0() { return cInputKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+	public class SlotElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Slot");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRequiredTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRequiredTypeItemTypeCrossReference_2_0 = (CrossReference)cRequiredTypeAssignment_2.eContents().get(0);
+		private final RuleCall cRequiredTypeItemTypeQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cRequiredTypeItemTypeCrossReference_2_0.eContents().get(1);
+		
+		//Slot:
+		//	name=ID ':' requiredType=[ItemType|QualifiedName];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ':' requiredType=[ItemType|QualifiedName]
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//requiredType=[ItemType|QualifiedName]
+		public Assignment getRequiredTypeAssignment_2() { return cRequiredTypeAssignment_2; }
+		
+		//[ItemType|QualifiedName]
+		public CrossReference getRequiredTypeItemTypeCrossReference_2_0() { return cRequiredTypeItemTypeCrossReference_2_0; }
+		
+		//QualifiedName
+		public RuleCall getRequiredTypeItemTypeQualifiedNameParserRuleCall_2_0_1() { return cRequiredTypeItemTypeQualifiedNameParserRuleCall_2_0_1; }
+	}
+	public class ItemGeneratorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.ItemGenerator");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGeneratorKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cGeneratesKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cGeneratedTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cGeneratedTypeItemTypeCrossReference_3_0 = (CrossReference)cGeneratedTypeAssignment_3.eContents().get(0);
+		private final RuleCall cGeneratedTypeItemTypeQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cGeneratedTypeItemTypeCrossReference_3_0.eContents().get(1);
+		private final Keyword cCostKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCostAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCostEIntParserRuleCall_5_0 = (RuleCall)cCostAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cOutputKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cOutputSlotsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOutputSlotsSlotParserRuleCall_8_0 = (RuleCall)cOutputSlotsAssignment_8.eContents().get(0);
+		private final Assignment cServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cServicesServiceParserRuleCall_9_0 = (RuleCall)cServicesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//ItemGenerator:
+		//	'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost=' cost=EInt '){'
+		//	'output' outputSlots+=Slot
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost=' cost=EInt '){' 'output'
+		//outputSlots+=Slot services+=Service* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'generator'
+		public Keyword getGeneratorKeyword_0() { return cGeneratorKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'generates'
+		public Keyword getGeneratesKeyword_2() { return cGeneratesKeyword_2; }
+		
+		//generatedType=[ItemType|QualifiedName]
+		public Assignment getGeneratedTypeAssignment_3() { return cGeneratedTypeAssignment_3; }
+		
+		//[ItemType|QualifiedName]
+		public CrossReference getGeneratedTypeItemTypeCrossReference_3_0() { return cGeneratedTypeItemTypeCrossReference_3_0; }
+		
+		//QualifiedName
+		public RuleCall getGeneratedTypeItemTypeQualifiedNameParserRuleCall_3_0_1() { return cGeneratedTypeItemTypeQualifiedNameParserRuleCall_3_0_1; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_4() { return cCostKeyword_4; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_5() { return cCostAssignment_5; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_5_0() { return cCostEIntParserRuleCall_5_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_6() { return cRightParenthesisLeftCurlyBracketKeyword_6; }
+		
+		//'output'
+		public Keyword getOutputKeyword_7() { return cOutputKeyword_7; }
+		
+		//outputSlots+=Slot
+		public Assignment getOutputSlotsAssignment_8() { return cOutputSlotsAssignment_8; }
+		
+		//Slot
+		public RuleCall getOutputSlotsSlotParserRuleCall_8_0() { return cOutputSlotsSlotParserRuleCall_8_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_9() { return cServicesAssignment_9; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_9_0() { return cServicesServiceParserRuleCall_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class StoreElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Store");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cProductStoreParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cWasteStoreParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Store:
+		//	ProductStore | WasteStore;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ProductStore | WasteStore
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ProductStore
+		public RuleCall getProductStoreParserRuleCall_0() { return cProductStoreParserRuleCall_0; }
+		
+		//WasteStore
+		public RuleCall getWasteStoreParserRuleCall_1() { return cWasteStoreParserRuleCall_1; }
+	}
+	public class ProductStoreElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.ProductStore");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cProductStoreKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cCapacityKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCapacityAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCapacityEIntParserRuleCall_5_0 = (RuleCall)cCapacityAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cInputKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cInputSlotsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cInputSlotsSlotParserRuleCall_8_0 = (RuleCall)cInputSlotsAssignment_8.eContents().get(0);
+		private final Assignment cServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cServicesServiceParserRuleCall_9_0 = (RuleCall)cServicesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//ProductStore:
+		//	'productStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){'
+		//	'input' inputSlots+=Slot
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'productStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){' 'input' inputSlots+=Slot services+=Service*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'productStore'
+		public Keyword getProductStoreKeyword_0() { return cProductStoreKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//',capacity='
+		public Keyword getCapacityKeyword_4() { return cCapacityKeyword_4; }
+		
+		//capacity=EInt
+		public Assignment getCapacityAssignment_5() { return cCapacityAssignment_5; }
+		
+		//EInt
+		public RuleCall getCapacityEIntParserRuleCall_5_0() { return cCapacityEIntParserRuleCall_5_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_6() { return cRightParenthesisLeftCurlyBracketKeyword_6; }
+		
+		//'input'
+		public Keyword getInputKeyword_7() { return cInputKeyword_7; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_8() { return cInputSlotsAssignment_8; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_8_0() { return cInputSlotsSlotParserRuleCall_8_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_9() { return cServicesAssignment_9; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_9_0() { return cServicesServiceParserRuleCall_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class WasteStoreElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.WasteStore");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWasteStoreKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cCapacityKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCapacityAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCapacityEIntParserRuleCall_5_0 = (RuleCall)cCapacityAssignment_5.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cInputKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cInputSlotsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cInputSlotsSlotParserRuleCall_8_0 = (RuleCall)cInputSlotsAssignment_8.eContents().get(0);
+		private final Assignment cServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cServicesServiceParserRuleCall_9_0 = (RuleCall)cServicesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//WasteStore:
+		//	'wasteStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){'
+		//	'input' inputSlots+=Slot
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'wasteStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){' 'input' inputSlots+=Slot services+=Service* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'wasteStore'
+		public Keyword getWasteStoreKeyword_0() { return cWasteStoreKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//',capacity='
+		public Keyword getCapacityKeyword_4() { return cCapacityKeyword_4; }
+		
+		//capacity=EInt
+		public Assignment getCapacityAssignment_5() { return cCapacityAssignment_5; }
+		
+		//EInt
+		public RuleCall getCapacityEIntParserRuleCall_5_0() { return cCapacityEIntParserRuleCall_5_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_6() { return cRightParenthesisLeftCurlyBracketKeyword_6; }
+		
+		//'input'
+		public Keyword getInputKeyword_7() { return cInputKeyword_7; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_8() { return cInputSlotsAssignment_8; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_8_0() { return cInputSlotsSlotParserRuleCall_8_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_9() { return cServicesAssignment_9; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_9_0() { return cServicesServiceParserRuleCall_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class BufferElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Buffer");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cBufferKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cInputKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cInputSlotsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInputSlotsSlotParserRuleCall_6_0 = (RuleCall)cInputSlotsAssignment_6.eContents().get(0);
+		private final Keyword cOutputKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cOutputSlotsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOutputSlotsSlotParserRuleCall_8_0 = (RuleCall)cOutputSlotsAssignment_8.eContents().get(0);
+		private final Assignment cServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cServicesServiceParserRuleCall_9_0 = (RuleCall)cServicesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//Buffer:
+		//	'buffer' name=ID '(cost=' cost=EInt '){'
+		//	'input' inputSlots+=Slot
+		//	'output' outputSlots+=Slot
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'buffer' name=ID '(cost=' cost=EInt '){' 'input' inputSlots+=Slot 'output' outputSlots+=Slot services+=Service* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'buffer'
+		public Keyword getBufferKeyword_0() { return cBufferKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_4() { return cRightParenthesisLeftCurlyBracketKeyword_4; }
+		
+		//'input'
+		public Keyword getInputKeyword_5() { return cInputKeyword_5; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_6() { return cInputSlotsAssignment_6; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_6_0() { return cInputSlotsSlotParserRuleCall_6_0; }
+		
+		//'output'
+		public Keyword getOutputKeyword_7() { return cOutputKeyword_7; }
+		
+		//outputSlots+=Slot
+		public Assignment getOutputSlotsAssignment_8() { return cOutputSlotsAssignment_8; }
+		
+		//Slot
+		public RuleCall getOutputSlotsSlotParserRuleCall_8_0() { return cOutputSlotsSlotParserRuleCall_8_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_9() { return cServicesAssignment_9; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_9_0() { return cServicesServiceParserRuleCall_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class ConveyorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Conveyor");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cConveyorKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cInputKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cInputSlotsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInputSlotsSlotParserRuleCall_6_0 = (RuleCall)cInputSlotsAssignment_6.eContents().get(0);
+		private final Keyword cOutputKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cOutputSlotsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOutputSlotsSlotParserRuleCall_8_0 = (RuleCall)cOutputSlotsAssignment_8.eContents().get(0);
+		private final Assignment cServicesAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cServicesServiceParserRuleCall_9_0 = (RuleCall)cServicesAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		
+		//Conveyor:
+		//	'conveyor' name=ID '(cost=' cost=EInt '){'
+		//	'input' inputSlots+=Slot
+		//	'output' outputSlots+=Slot
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'conveyor' name=ID '(cost=' cost=EInt '){' 'input' inputSlots+=Slot 'output' outputSlots+=Slot services+=Service* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'conveyor'
+		public Keyword getConveyorKeyword_0() { return cConveyorKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_4() { return cRightParenthesisLeftCurlyBracketKeyword_4; }
+		
+		//'input'
+		public Keyword getInputKeyword_5() { return cInputKeyword_5; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_6() { return cInputSlotsAssignment_6; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_6_0() { return cInputSlotsSlotParserRuleCall_6_0; }
+		
+		//'output'
+		public Keyword getOutputKeyword_7() { return cOutputKeyword_7; }
+		
+		//outputSlots+=Slot
+		public Assignment getOutputSlotsAssignment_8() { return cOutputSlotsAssignment_8; }
+		
+		//Slot
+		public RuleCall getOutputSlotsSlotParserRuleCall_8_0() { return cOutputSlotsSlotParserRuleCall_8_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_9() { return cServicesAssignment_9; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_9_0() { return cServicesServiceParserRuleCall_9_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class MachineElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.Machine");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMachineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cInputKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cInputSlotsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cInputSlotsSlotParserRuleCall_5_1_0 = (RuleCall)cInputSlotsAssignment_5_1.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cOutputKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cOutputSlotsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cOutputSlotsSlotParserRuleCall_6_1_0 = (RuleCall)cOutputSlotsAssignment_6_1.eContents().get(0);
+		private final Assignment cServicesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cServicesServiceParserRuleCall_7_0 = (RuleCall)cServicesAssignment_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//Machine:
+		//	'machine' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'machine' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+ services+=Service*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'machine'
+		public Keyword getMachineKeyword_0() { return cMachineKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_4() { return cRightParenthesisLeftCurlyBracketKeyword_4; }
+		
+		//('input' inputSlots+=Slot)+
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'input'
+		public Keyword getInputKeyword_5_0() { return cInputKeyword_5_0; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_5_1() { return cInputSlotsAssignment_5_1; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_5_1_0() { return cInputSlotsSlotParserRuleCall_5_1_0; }
+		
+		//('output' outputSlots+=Slot)+
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'output'
+		public Keyword getOutputKeyword_6_0() { return cOutputKeyword_6_0; }
+		
+		//outputSlots+=Slot
+		public Assignment getOutputSlotsAssignment_6_1() { return cOutputSlotsAssignment_6_1; }
+		
+		//Slot
+		public RuleCall getOutputSlotsSlotParserRuleCall_6_1_0() { return cOutputSlotsSlotParserRuleCall_6_1_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_7() { return cServicesAssignment_7; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_7_0() { return cServicesServiceParserRuleCall_7_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+	}
+	public class TurnTableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.TurnTable");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTurntableKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cCostKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCostAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCostEIntParserRuleCall_3_0 = (RuleCall)cCostAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cInputKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cInputSlotsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cInputSlotsSlotParserRuleCall_5_1_0 = (RuleCall)cInputSlotsAssignment_5_1.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cOutputKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cOutputSlotsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cOutputSlotsSlotParserRuleCall_6_1_0 = (RuleCall)cOutputSlotsAssignment_6_1.eContents().get(0);
+		private final Assignment cServicesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cServicesServiceParserRuleCall_7_0 = (RuleCall)cServicesAssignment_7.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//TurnTable:
+		//	'turntable' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+
+		//	services+=Service*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'turntable' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+ services+=Service*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'turntable'
+		public Keyword getTurntableKeyword_0() { return cTurntableKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'(cost='
+		public Keyword getCostKeyword_2() { return cCostKeyword_2; }
+		
+		//cost=EInt
+		public Assignment getCostAssignment_3() { return cCostAssignment_3; }
+		
+		//EInt
+		public RuleCall getCostEIntParserRuleCall_3_0() { return cCostEIntParserRuleCall_3_0; }
+		
+		//'){'
+		public Keyword getRightParenthesisLeftCurlyBracketKeyword_4() { return cRightParenthesisLeftCurlyBracketKeyword_4; }
+		
+		//('input' inputSlots+=Slot)+
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'input'
+		public Keyword getInputKeyword_5_0() { return cInputKeyword_5_0; }
+		
+		//inputSlots+=Slot
+		public Assignment getInputSlotsAssignment_5_1() { return cInputSlotsAssignment_5_1; }
+		
+		//Slot
+		public RuleCall getInputSlotsSlotParserRuleCall_5_1_0() { return cInputSlotsSlotParserRuleCall_5_1_0; }
+		
+		//('output' outputSlots+=Slot)+
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'output'
+		public Keyword getOutputKeyword_6_0() { return cOutputKeyword_6_0; }
+		
+		//outputSlots+=Slot
+		public Assignment getOutputSlotsAssignment_6_1() { return cOutputSlotsAssignment_6_1; }
+		
+		//Slot
+		public RuleCall getOutputSlotsSlotParserRuleCall_6_1_0() { return cOutputSlotsSlotParserRuleCall_6_1_0; }
+		
+		//services+=Service*
+		public Assignment getServicesAssignment_7() { return cServicesAssignment_7; }
+		
+		//Service
+		public RuleCall getServicesServiceParserRuleCall_7_0() { return cServicesServiceParserRuleCall_7_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
 	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "at.ac.tuwien.big.Stl.QualifiedName");
@@ -164,6 +1139,21 @@ public class StlGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private final SystemElements pSystem;
+	private final AreaElements pArea;
+	private final ItemTypeElements pItemType;
+	private final ConnectorElements pConnector;
+	private final ComponentElements pComponent;
+	private final ServiceElements pService;
+	private final ParameterElements pParameter;
+	private final SlotElements pSlot;
+	private final ItemGeneratorElements pItemGenerator;
+	private final StoreElements pStore;
+	private final ProductStoreElements pProductStore;
+	private final WasteStoreElements pWasteStore;
+	private final BufferElements pBuffer;
+	private final ConveyorElements pConveyor;
+	private final MachineElements pMachine;
+	private final TurnTableElements pTurnTable;
 	private final QualifiedNameElements pQualifiedName;
 	private final EDoubleElements pEDouble;
 	private final EStringElements pEString;
@@ -179,6 +1169,21 @@ public class StlGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pSystem = new SystemElements();
+		this.pArea = new AreaElements();
+		this.pItemType = new ItemTypeElements();
+		this.pConnector = new ConnectorElements();
+		this.pComponent = new ComponentElements();
+		this.pService = new ServiceElements();
+		this.pParameter = new ParameterElements();
+		this.pSlot = new SlotElements();
+		this.pItemGenerator = new ItemGeneratorElements();
+		this.pStore = new StoreElements();
+		this.pProductStore = new ProductStoreElements();
+		this.pWasteStore = new WasteStoreElements();
+		this.pBuffer = new BufferElements();
+		this.pConveyor = new ConveyorElements();
+		this.pMachine = new MachineElements();
+		this.pTurnTable = new TurnTableElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pEDouble = new EDoubleElements();
 		this.pEString = new EStringElements();
@@ -213,13 +1218,193 @@ public class StlGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//System:
-	//	'system' name=EString;
+	//	'system' name=ID '{'
+	//	itemTypes+=ItemType*
+	//	areas+=Area*
+	//	'}';
 	public SystemElements getSystemAccess() {
 		return pSystem;
 	}
 	
 	public ParserRule getSystemRule() {
 		return getSystemAccess().getRule();
+	}
+	
+	//Area:
+	//	'area' name=ID '{'
+	//	components+=Component*
+	//	connectors+=Connector*
+	//	'}';
+	public AreaElements getAreaAccess() {
+		return pArea;
+	}
+	
+	public ParserRule getAreaRule() {
+		return getAreaAccess().getRule();
+	}
+	
+	//ItemType:
+	//	'item' name=ID '=' description=EString;
+	public ItemTypeElements getItemTypeAccess() {
+		return pItemType;
+	}
+	
+	public ParserRule getItemTypeRule() {
+		return getItemTypeAccess().getRule();
+	}
+	
+	//Connector:
+	//	entry=[Slot|QualifiedName] '>' exit=[Slot|QualifiedName];
+	public ConnectorElements getConnectorAccess() {
+		return pConnector;
+	}
+	
+	public ParserRule getConnectorRule() {
+		return getConnectorAccess().getRule();
+	}
+	
+	//Component:
+	//	ItemGenerator | Store | Buffer | Conveyor | Machine | TurnTable;
+	public ComponentElements getComponentAccess() {
+		return pComponent;
+	}
+	
+	public ParserRule getComponentRule() {
+		return getComponentAccess().getRule();
+	}
+	
+	//Service:
+	//	'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt ')' |
+	//	'service' name=ID '(cost=' cost=EInt ',reliability=' reliability=EDouble ',processingTime=' processingTime=EInt '){'
+	//	parameters+=Parameter+
+	//	'}';
+	public ServiceElements getServiceAccess() {
+		return pService;
+	}
+	
+	public ParserRule getServiceRule() {
+		return getServiceAccess().getRule();
+	}
+	
+	//Parameter:
+	//	'input' name=ID;
+	public ParameterElements getParameterAccess() {
+		return pParameter;
+	}
+	
+	public ParserRule getParameterRule() {
+		return getParameterAccess().getRule();
+	}
+	
+	//Slot:
+	//	name=ID ':' requiredType=[ItemType|QualifiedName];
+	public SlotElements getSlotAccess() {
+		return pSlot;
+	}
+	
+	public ParserRule getSlotRule() {
+		return getSlotAccess().getRule();
+	}
+	
+	//ItemGenerator:
+	//	'generator' name=ID 'generates' generatedType=[ItemType|QualifiedName] '(cost=' cost=EInt '){'
+	//	'output' outputSlots+=Slot
+	//	services+=Service*
+	//	'}';
+	public ItemGeneratorElements getItemGeneratorAccess() {
+		return pItemGenerator;
+	}
+	
+	public ParserRule getItemGeneratorRule() {
+		return getItemGeneratorAccess().getRule();
+	}
+	
+	//Store:
+	//	ProductStore | WasteStore;
+	public StoreElements getStoreAccess() {
+		return pStore;
+	}
+	
+	public ParserRule getStoreRule() {
+		return getStoreAccess().getRule();
+	}
+	
+	//ProductStore:
+	//	'productStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){'
+	//	'input' inputSlots+=Slot
+	//	services+=Service*
+	//	'}';
+	public ProductStoreElements getProductStoreAccess() {
+		return pProductStore;
+	}
+	
+	public ParserRule getProductStoreRule() {
+		return getProductStoreAccess().getRule();
+	}
+	
+	//WasteStore:
+	//	'wasteStore' name=ID '(cost=' cost=EInt ',capacity=' capacity=EInt '){'
+	//	'input' inputSlots+=Slot
+	//	services+=Service*
+	//	'}';
+	public WasteStoreElements getWasteStoreAccess() {
+		return pWasteStore;
+	}
+	
+	public ParserRule getWasteStoreRule() {
+		return getWasteStoreAccess().getRule();
+	}
+	
+	//Buffer:
+	//	'buffer' name=ID '(cost=' cost=EInt '){'
+	//	'input' inputSlots+=Slot
+	//	'output' outputSlots+=Slot
+	//	services+=Service*
+	//	'}';
+	public BufferElements getBufferAccess() {
+		return pBuffer;
+	}
+	
+	public ParserRule getBufferRule() {
+		return getBufferAccess().getRule();
+	}
+	
+	//Conveyor:
+	//	'conveyor' name=ID '(cost=' cost=EInt '){'
+	//	'input' inputSlots+=Slot
+	//	'output' outputSlots+=Slot
+	//	services+=Service*
+	//	'}';
+	public ConveyorElements getConveyorAccess() {
+		return pConveyor;
+	}
+	
+	public ParserRule getConveyorRule() {
+		return getConveyorAccess().getRule();
+	}
+	
+	//Machine:
+	//	'machine' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+
+	//	services+=Service*
+	//	'}';
+	public MachineElements getMachineAccess() {
+		return pMachine;
+	}
+	
+	public ParserRule getMachineRule() {
+		return getMachineAccess().getRule();
+	}
+	
+	//TurnTable:
+	//	'turntable' name=ID '(cost=' cost=EInt '){' ('input' inputSlots+=Slot)+ ('output' outputSlots+=Slot)+
+	//	services+=Service*
+	//	'}';
+	public TurnTableElements getTurnTableAccess() {
+		return pTurnTable;
+	}
+	
+	public ParserRule getTurnTableRule() {
+		return getTurnTableAccess().getRule();
 	}
 	
 	//QualifiedName:

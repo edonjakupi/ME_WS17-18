@@ -6,7 +6,7 @@ system ShelfSawingProductionLine{
 	area ProductionArea {
 		
 		generator RawShelfProducer generates RawShelf(cost=1000){
-			output RawShelfProducer_Output:Shelf
+			output RawShelfProducer_Output:RawShelf
 		}
 		
 		conveyor ToBufferConveyor(cost=200){

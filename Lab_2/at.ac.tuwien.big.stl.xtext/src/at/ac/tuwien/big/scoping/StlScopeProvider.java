@@ -14,8 +14,10 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 import at.ac.tuwien.big.stl.Area;
 import at.ac.tuwien.big.stl.Component;
+import at.ac.tuwien.big.stl.ItemType;
 import at.ac.tuwien.big.stl.STLPackage;
 import at.ac.tuwien.big.stl.Slot;
+import at.ac.tuwien.big.stl.ItemGenerator;
 
 /**
  * This class contains custom scoping description.
@@ -33,6 +35,22 @@ public class StlScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * (reference Slot.requiredType) has to be the item type defined by the item
 	 * generator as generated type (reference ItemGenerator.generatedType)
 	 */
+	
+	public IScope scope_Slot_requiredType(Slot slot, EReference eReference) {
+		if (!eReference.equals(STLPackage.Literals.SLOT__REQUIRED_TYPE)) {
+			return IScope.NULLSCOPE;
+		}
+		
+		Component comp = getComponent(slot);
+		
+		if (comp instanceof ItemGenerator) {
+			List<ItemType> generatedItemType = new ArrayList<ItemType>();
+			generatedItemType.add(((ItemGenerator) comp).getGeneratedType());
+			return Scopes.scopeFor(generatedItemType);
+		} else {
+			return Scopes.scopeFor(getAllItemTypes(getSystem(slot)));
+		}
+	}
 
 	/**
 	 * TODO: Scoping for the exit slot of a connector
@@ -117,6 +135,10 @@ public class StlScopeProvider extends AbstractDeclarativeScopeProvider {
 		List<Slot> slotList = new ArrayList<>();
 		system.getAreas().forEach(a -> a.getComponents().forEach(c -> slotList.addAll(c.getOutputSlots())));
 		return slotList;
+	}
+	
+	private List<ItemType> getAllItemTypes(at.ac.tuwien.big.stl.System system) {
+		return system.getItemTypes();
 	}
 
 }

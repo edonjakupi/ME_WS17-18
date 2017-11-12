@@ -14,6 +14,7 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 import at.ac.tuwien.big.stl.Area;
 import at.ac.tuwien.big.stl.Component;
+import at.ac.tuwien.big.stl.Connector;
 import at.ac.tuwien.big.stl.ItemType;
 import at.ac.tuwien.big.stl.STLPackage;
 import at.ac.tuwien.big.stl.Slot;
@@ -35,20 +36,20 @@ public class StlScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * (reference Slot.requiredType) has to be the item type defined by the item
 	 * generator as generated type (reference ItemGenerator.generatedType)
 	 */
-	
+
 	public IScope scope_Slot_requiredType(Slot slot, EReference eReference) {
 		if (!eReference.equals(STLPackage.Literals.SLOT__REQUIRED_TYPE)) {
 			return IScope.NULLSCOPE;
 		}
-		
+
 		Component comp = getComponent(slot);
-		
+
 		if (comp instanceof ItemGenerator) {
 			List<ItemType> generatedItemType = new ArrayList<ItemType>();
 			generatedItemType.add(((ItemGenerator) comp).getGeneratedType());
 			return Scopes.scopeFor(generatedItemType);
 		} else {
-			return Scopes.scopeFor(getAllItemTypes(getSystem(slot)));
+			return Scopes.scopeFor(getSystem(slot).getItemTypes());
 		}
 	}
 
@@ -62,6 +63,24 @@ public class StlScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * of the connector.
 	 */
 	
+	public IScope scope_Connector_exit(Connector connector, EReference eReference) {
+		if (!eReference.equals(STLPackage.Literals.CONNECTOR__EXIT)) {
+			return IScope.NULLSCOPE;
+		}
+		
+		List<Slot> allInputSlots = getAllInputSlots(getSystem(connector));
+		List<Slot> legitimateSlots = new ArrayList<Slot>();
+				
+		for (int i = 0; i < allInputSlots.size(); i++) {
+			if (!getComponent(connector.getEntry()).equals(getComponent(allInputSlots.get(i))) &&
+					connector.getEntry().getRequiredType().equals(allInputSlots.get(i).getRequiredType())) {
+				legitimateSlots.add(allInputSlots.get(i));
+			}
+		}
+		
+		return Scopes.scopeFor(legitimateSlots);
+	}
+
 	/**
 	 * GIVEN: Scoping for Connector.entry: The entry slot of a connector has to be
 	 * an output slot of a component.
@@ -136,9 +155,4 @@ public class StlScopeProvider extends AbstractDeclarativeScopeProvider {
 		system.getAreas().forEach(a -> a.getComponents().forEach(c -> slotList.addAll(c.getOutputSlots())));
 		return slotList;
 	}
-	
-	private List<ItemType> getAllItemTypes(at.ac.tuwien.big.stl.System system) {
-		return system.getItemTypes();
-	}
-
 }

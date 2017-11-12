@@ -46,9 +46,9 @@ system ShelfSawingProductionLine{
 			output TurnTable_Output:WoodWaste
 		}
 		
-		RawShelfProducer_Output > Buffer_Output
-		Buffer_Output > ToShelfStoreConveyor_Input	
-		ToBufferConveyor_Output > ToBufferConveyor_Input
+		RawShelfProducer_Output > ToBufferConveyor_Input
+		Buffer_Output > SawingMachine_Input
+		ToBufferConveyor_Output > Buffer_Input
 		SawingMachine_ProductOutput > ToShelfStoreConveyor_Input
 		SawingMachine_WasteOutput > TurnTable_Input
 		TurnTable_Output > ToWasteStoreConveyor_Input

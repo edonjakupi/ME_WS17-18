@@ -4,6 +4,63 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="stl" initialisation="true" domainClass="stl::System" enablePopupBars="true">
       <metamodel href="../../at.ac.tuwien.big.stl/model/stl.ecore#/"/>
       <defaultLayer name="Default">
+        <nodeMappings name="TurnTable" domainClass="stl::TurnTable">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/chooser.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Conveyor" domainClass="stl::Conveyor">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/band.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Machine" domainClass="stl::Machine">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/assemblymachine.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ItemGenerator" domainClass="stl::ItemGenerator">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/3dprinter.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Buffer" domainClass="stl::Buffer">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/stack.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ProductStore" domainClass="stl::ProductStore">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/lager.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="WasteStore" domainClass="stl::WasteStore">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="LEFT" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/at.ac.tuwien.big.stl.design/images/muell.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Slot" domainClass="stl::Slot">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Connector" targetFinderExpression="feature:exit" sourceFinderExpression="feature:entry" domainClass="stl::Connector" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="Area" semanticCandidatesExpression="feature:areas" domainClass="stl::Area">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -13,6 +70,7 @@
           </style>
         </containerMappings>
         <containerMappings name="ItemTypes" semanticCandidatesExpression="[self/]" domainClass="stl::System">
+          <subContainerMappings name="ItemType" semanticCandidatesExpression="feature:eAllContents" domainClass="stl::ItemType"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Item Types">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -21,13 +79,144 @@
           </style>
         </containerMappings>
         <toolSections name="System">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Area" containerMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@containerMappings[name='Area']" iconPath="/at.ac.tuwien.big.stl.design/icons/Area.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createArea" label="Area" containerMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@containerMappings[name='Area']" iconPath="/at.ac.tuwien.big.stl.design/icons/Area.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Area" referenceName="areas">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Area'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createItemType" label="ItemType" containerMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@containerMappings[name='ItemTypes']/@subContainerMappings[name='ItemType']" iconPath="/at.ac.tuwien.big.stl.design/icons/ItemType.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::ItemType" referenceName="itemTypes">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['ItemType'/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="description"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Component">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createTurnTable" label="TurnTable" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='TurnTable']" iconPath="/at.ac.tuwien.big.stl.design/icons/Turntable.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::TurnTable" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['TurnTable'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createConveyor" label="Conveyor" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='Conveyor']" iconPath="/at.ac.tuwien.big.stl.design/icons/Conveyor.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Conveyor" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Conveyor'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createMachine" label="Machine" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='Machine']" iconPath="/at.ac.tuwien.big.stl.design/icons/Machine.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Machine" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Machine'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createItemGenerator" label="ItemGenerator" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='ItemGenerator']" iconPath="/at.ac.tuwien.big.stl.design/icons/ItemGenerator.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::ItemGenerator" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['ItemGenerator'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createBuffer" label="Buffer" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='Buffer']" iconPath="/at.ac.tuwien.big.stl.design/icons/Buffer.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Buffer" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Buffer'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createProductStore" label="ProductStore" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='ProductStore']" iconPath="/at.ac.tuwien.big.stl.design/icons/ProductStore.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::ProductStore" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['ProductStore'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createWasteStore" label="WasteStore" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='WasteStore']" iconPath="/at.ac.tuwien.big.stl.design/icons/WasteStore.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::WasteStore" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['ProductStore'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Slot">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createInputSlot" label="InputSlot" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='Slot']" iconPath="/at.ac.tuwien.big.stl.design/icons/InputSlot.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Slot" referenceName="inputSlots">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Slot'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createOutputSlot" label="OutputSlot" nodeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@nodeMappings[name='Slot']" iconPath="/at.ac.tuwien.big.stl.design/icons/OutputSlot.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Slot" referenceName="outputSlots">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Slot'/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Connector">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="createConnector" label="Connector" edgeMappings="//@ownedViewpoints[name='STLViewpoint']/@ownedRepresentations[name='stl']/@defaultLayer/@edgeMappings[name='Connector']" iconPath="/at.ac.tuwien.big.stl.design/icons/Connector.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stl::Connector" referenceName="connectors">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entry" valueExpression="var:entry"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="exit" valueExpression="var:exit"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

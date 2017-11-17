@@ -1,6 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<at.ac.tuwien.big.stl:System
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:at.ac.tuwien.big.stl="http://www.big.tuwien.ac.at/Stl"
-    name="CreationToolTestModel"/>
+<?xml version="1.0" encoding="ASCII"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0"/>

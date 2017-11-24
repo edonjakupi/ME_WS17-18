@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<CAEX:CAEXFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CAEX="http://caex" fileName="IAFProductionLine" schemaVersion="2.15">
+  <instanceHierarchy name="IAFProductionLine">
+    <internalElement name="Area1">
+      <internalElement name="a1_t1">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t1_output"/>
+      </internalElement>
+      <internalElement name="a1_t2">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t2_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t2_output2"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t2_output1"/>
+      </internalElement>
+      <internalElement name="a1_t3">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t3_input1"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t3_input2"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t3_output"/>
+      </internalElement>
+      <internalElement name="a1_t4">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t4_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_t4_output"/>
+      </internalElement>
+      <internalElement name="a1_m1">
+        <attribute name="cost" value="1000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_m1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_m1_output"/>
+      </internalElement>
+      <internalElement name="a1_c1">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c1_output"/>
+      </internalElement>
+      <internalElement name="a1_c2">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c2_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c2_output"/>
+      </internalElement>
+      <internalElement name="a1_c3">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c3_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a1_c3_output"/>
+      </internalElement>
+      <internalLink name="a1_m1_output_TO_a1_t2_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.4/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.1/@externalInterface.0"/>
+      <internalLink name="a1_t2_output1_TO_a1_c1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.1/@externalInterface.2" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.5/@externalInterface.0"/>
+      <internalLink name="a1_c1_output_TO_a1_t3_input1" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.5/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.2/@externalInterface.0"/>
+      <internalLink name="a1_t3_output_TO_a1_c2_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.2/@externalInterface.2" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.6/@externalInterface.0"/>
+      <internalLink name="a1_c2_output_TO_a1_t4_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.6/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.3/@externalInterface.0"/>
+      <internalLink name="a1_t4_output_TO_a1_c3_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.3/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.7/@externalInterface.0"/>
+      <internalLink name="a1_c3_output_TO_a1_t1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.7/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.0/@externalInterface.0"/>
+      <internalLink name="a1_t1_output_TO_a1_m1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.0/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.4/@externalInterface.0"/>
+      <internalLink name="a1_t2_output2_TO_a2_c1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.1/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.1/@internalElement.0/@externalInterface.0"/>
+    </internalElement>
+    <internalElement name="Area2">
+      <internalElement name="a2_c1">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a2_c1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a2_c1_output"/>
+      </internalElement>
+      <internalElement name="a2_m1">
+        <attribute name="cost" value="1000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a2_m1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a2_m1_output"/>
+      </internalElement>
+      <internalLink name="a2_c1_output_TO_a3_t1_input1" partnerSideA="//@instanceHierarchy.0/@internalElement.1/@internalElement.0/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.0/@externalInterface.0"/>
+      <internalLink name="a2_m1_output_TO_a1_t3_input2" partnerSideA="//@instanceHierarchy.0/@internalElement.1/@internalElement.1/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.2/@externalInterface.1"/>
+    </internalElement>
+    <internalElement name="Area3">
+      <internalElement name="a3_t1">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t1_input1"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t1_input2"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t1_output"/>
+      </internalElement>
+      <internalElement name="a3_t4">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t4_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t4_output2"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t4_output1"/>
+      </internalElement>
+      <internalElement name="a3_c3">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c3_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c3_output"/>
+      </internalElement>
+      <internalElement name="a3_m1">
+        <attribute name="cost" value="1000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_m1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_m1_output"/>
+      </internalElement>
+      <internalElement name="a3_t2">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t2_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t2_output"/>
+      </internalElement>
+      <internalElement name="a3_c1">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c1_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c1_output"/>
+      </internalElement>
+      <internalElement name="a3_t3">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t3_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_t3_output"/>
+      </internalElement>
+      <internalElement name="a3_c2">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c2_input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="a3_c2_output"/>
+      </internalElement>
+      <internalLink name="a3_t1_output_TO_a3_m1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.0/@externalInterface.2" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.3/@externalInterface.0"/>
+      <internalLink name="a3_m1_output_TO_a3_t2_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.3/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.4/@externalInterface.0"/>
+      <internalLink name="a3_t2_output_TO_a3_c1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.4/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.5/@externalInterface.0"/>
+      <internalLink name="a3_c1_output_TO_a3_t3_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.5/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.6/@externalInterface.0"/>
+      <internalLink name="a3_t3_output_TO_a3_c2_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.6/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.7/@externalInterface.0"/>
+      <internalLink name="a3_c2_output_TO_a3_t4_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.7/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.1/@externalInterface.0"/>
+      <internalLink name="a3_t4_output2_TO_a2_m1_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.1/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.1/@internalElement.1/@externalInterface.0"/>
+      <internalLink name="a3_t4_output1_TO_a3_c3_input" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.1/@externalInterface.2" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.2/@externalInterface.0"/>
+      <internalLink name="a3_c3_output_TO_a3_t1_input2" partnerSideA="//@instanceHierarchy.0/@internalElement.2/@internalElement.2/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.2/@internalElement.0/@externalInterface.1"/>
+    </internalElement>
+  </instanceHierarchy>
+</CAEX:CAEXFile>

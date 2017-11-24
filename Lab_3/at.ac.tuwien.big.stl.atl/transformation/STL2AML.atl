@@ -1,0 +1,7 @@
+-- @path AML=/at.ac.tuwien.big.stl.atl/metamodels/CAEX.ecore
+-- @path STL=/at.ac.tuwien.big.stl.atl/metamodels/stl.ecore
+
+
+module STL2AML;
+create OUT: AML from IN: STL;
+

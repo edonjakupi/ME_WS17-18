@@ -5,3 +5,39 @@
 module STL2AML;
 create OUT: AML from IN: STL;
 
+rule System2CAEX {
+	from
+		i1: STL!System
+	to
+}
+
+rule Area2InternalElement {
+	from
+		i1: STL!Area
+	to
+}
+
+rule Component2InternalElementWithCost {
+	from
+		i1: STL!Component
+	to
+}
+
+rule Storage2InternalElementWithCapacity {
+	from
+		i1: STL!Store
+	to
+}
+
+rule Slot2ExternalInterface {
+	from
+		i1: STL!Slot
+	to
+		o1: AML!ExternalInterface
+}
+
+rule Connector2InternalLink {
+	from
+		i1: STL!Connector
+	to
+}

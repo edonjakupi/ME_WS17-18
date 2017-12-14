@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<CAEX:CAEXFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CAEX="http://caex" fileName="ShelfSawingProductionLine">
+  <instanceHierarchy name="ShelfSawingProductionLine">
+    <internalElement name="ProductionArea">
+      <internalElement name="RawShelfProducer">
+        <attribute name="cost" value="1000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="RawShelfProducer_Output"/>
+      </internalElement>
+      <internalElement name="ToBufferConveyor">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToBufferConveyor_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToBufferConveyor_Output"/>
+      </internalElement>
+      <internalElement name="Buffer">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="Buffer_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="Buffer_Output"/>
+      </internalElement>
+      <internalElement name="SawingMachine">
+        <attribute name="cost" value="1000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="SawingMachine_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="SawingMachine_ProductOutput"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="SawingMachine_WasteOutput"/>
+      </internalElement>
+      <internalElement name="ToShelfStoreConveyor">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToShelfStoreConveyor_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToShelfStoreConveyor_Output"/>
+      </internalElement>
+      <internalElement name="ToWasteStoreConveyor">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToWasteStoreConveyor_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ToWasteStoreConveyor_Output"/>
+      </internalElement>
+      <internalElement name="TurnTable">
+        <attribute name="cost" value="200"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="TurnTable_Input"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="TurnTable_Output"/>
+      </internalElement>
+      <internalLink name="RawShelfProducer_Output_TO_ToBufferConveyor_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.0/@externalInterface.0" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.1/@externalInterface.0"/>
+      <internalLink name="Buffer_Output_TO_SawingMachine_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.2/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.3/@externalInterface.0"/>
+      <internalLink name="ToBufferConveyor_Output_TO_Buffer_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.1/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.2/@externalInterface.0"/>
+      <internalLink name="SawingMachine_ProductOutput_TO_ToShelfStoreConveyor_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.3/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.4/@externalInterface.0"/>
+      <internalLink name="SawingMachine_WasteOutput_TO_TurnTable_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.3/@externalInterface.2" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.6/@externalInterface.0"/>
+      <internalLink name="TurnTable_Output_TO_ToWasteStoreConveyor_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.6/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.0/@internalElement.5/@externalInterface.0"/>
+      <internalLink name="ToWasteStoreConveyor_Output_TO_WoodWasteStore_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.5/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.1/@internalElement.1/@externalInterface.0"/>
+      <internalLink name="ToShelfStoreConveyor_Output_TO_ShelfStore_Input" partnerSideA="//@instanceHierarchy.0/@internalElement.0/@internalElement.4/@externalInterface.1" partnerSideB="//@instanceHierarchy.0/@internalElement.1/@internalElement.0/@externalInterface.0"/>
+    </internalElement>
+    <internalElement name="StoreArea">
+      <internalElement name="ShelfStore">
+        <attribute name="cost" value="1000"/>
+        <attribute name="capacity" value="500"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="ShelfStore_Input"/>
+      </internalElement>
+      <internalElement name="WoodWasteStore">
+        <attribute name="cost" value="800"/>
+        <attribute name="capacity" value="5000"/>
+        <externalInterface xsi:type="CAEX:ExternalInterface" name="WoodWasteStore_Input"/>
+      </internalElement>
+    </internalElement>
+  </instanceHierarchy>
+</CAEX:CAEXFile>

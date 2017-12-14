@@ -5,39 +5,89 @@
 module STL2AML;
 create OUT: AML from IN: STL;
 
-rule System2CAEX {
+helper def: name : String = '';
+helper context String def: getcostname(): String = 'cost';
+helper context String def: getcapacityname(): String = 'capacity';
+
+rule System2CAEXFile {
 	from
-		i1: STL!System
+		i0: STL!System
 	to
+		o0: AML!CAEXFile (
+			fileName <- i0.name,
+			instanceHierarchy <- o1
+		),
+		o1: AML!InstanceHierarchy (
+			name <- i0.name,
+			internalElement <- i0.areas
+		)
 }
 
 rule Area2InternalElement {
 	from
-		i1: STL!Area
+		i0: STL!Area
 	to
+		o0: AML!InternalElement (
+			name <- i0.name,
+			internalElement <- i0.components,
+			internalElement <- i0.components -> select(x | x.oclIsTypeOf(STL!Store)) -> collect(x | thisModule.resolveTemp(x, 'o0')),
+			internalLink <- i0.connectors
+		)
 }
 
-rule Component2InternalElementWithCost {
+rule Component2InternalElement {
 	from
-		i1: STL!Component
+		i0: STL!Component
 	to
+		o0: AML!InternalElement (
+			name <- i0.name,
+			externalInterface <- i0.inputSlots,
+			externalInterface <- i0.outputSlots,
+			attribute <- o1
+		),
+		o1: AML!Attribute (
+			name <- thisModule.name.getcostname(),
+			value <- i0.cost.toString()
+		)
 }
 
-rule Storage2InternalElementWithCapacity {
+rule Storage2InternalElement extends Component2InternalElement {
 	from
-		i1: STL!Store
+		i0: STL!Store
 	to
-}
-
-rule Slot2ExternalInterface {
-	from
-		i1: STL!Slot
-	to
-		o1: AML!ExternalInterface
+		o0: AML!InternalElement (
+			name <- i0.name,
+			externalInterface <- i0.inputSlots,
+			externalInterface <- i0.outputSlots,
+			attribute <- o1,
+			attribute <- o2
+		),
+		o1: AML!Attribute (
+			name <- thisModule.name.getcostname(),
+			value <- i0.cost.toString()
+		),
+		o2: AML!Attribute (
+			name <- thisModule.name.getcapacityname(),
+			value <- i0.capacity.toString()
+		)
 }
 
 rule Connector2InternalLink {
 	from
-		i1: STL!Connector
+		i0: STL!Connector
 	to
+		o0: AML!InternalLink (
+			partnerSideA <- i0.entry,
+			partnerSideB <- i0.exit,
+			name <- i0.entry.name + '_TO_' + i0.exit.name
+		)
+}
+
+rule Slot2ExternalInterface {
+	from
+		i0: STL!Slot
+	to
+		o0: AML!ExternalInterface (
+			name <- i0.name
+		)
 }

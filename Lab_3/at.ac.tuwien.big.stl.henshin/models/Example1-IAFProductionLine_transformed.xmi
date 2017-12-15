@@ -41,42 +41,19 @@
       <inputSlots name="a1_c3_input" requiredType="//@itemTypes.0"/>
     </components>
     <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
+      <outputSlots name="GenBuffer_OUT" requiredType="//@itemTypes.0"/>
+      <inputSlots name="GenBuffer_IN" requiredType="//@itemTypes.0"/>
     </components>
     <connectors entry="//@areas.0/@components.4/@outputSlots.0" exit="//@areas.0/@components.1/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.1/@outputSlots.1" exit="//@areas.0/@components.14/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.5/@outputSlots.0" exit="//@areas.0/@components.10/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.2/@outputSlots.0" exit="//@areas.0/@components.12/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.6/@outputSlots.0" exit="//@areas.0/@components.9/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.3/@outputSlots.0" exit="//@areas.0/@components.11/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.7/@outputSlots.0" exit="//@areas.0/@components.8/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.14/@outputSlots.0" exit="//@areas.0/@components.4/@inputSlots.0"/>
-    <connectors entry="//@areas.0/@components.1/@outputSlots.0" exit="//@areas.0/@components.13/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.1/@outputSlots.1" exit="//@areas.0/@components.5/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.5/@outputSlots.0" exit="//@areas.0/@components.2/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.2/@outputSlots.0" exit="//@areas.0/@components.6/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.6/@outputSlots.0" exit="//@areas.0/@components.3/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.3/@outputSlots.0" exit="//@areas.0/@components.7/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.7/@outputSlots.0" exit="//@areas.0/@components.0/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.8/@outputSlots.0" exit="//@areas.0/@components.4/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.1/@outputSlots.0" exit="//@areas.1/@components.0/@inputSlots.0"/>
+    <connectors entry="//@areas.0/@components.0/@outputSlots.0" exit="//@areas.0/@components.8/@inputSlots.0"/>
   </areas>
   <areas name="Area2">
     <components xsi:type="at.ac.tuwien.big.stl:Conveyor" name="a2_c1" cost="200">
@@ -136,42 +113,24 @@
       <inputSlots name="a3_c2_input" requiredType="//@itemTypes.0"/>
     </components>
     <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
+      <outputSlots name="GenBuffer_OUT" requiredType="//@itemTypes.0"/>
+      <inputSlots name="GenBuffer_IN" requiredType="//@itemTypes.0"/>
     </components>
     <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
+      <outputSlots name="GenBuffer_OUT" requiredType="//@itemTypes.0"/>
+      <inputSlots name="GenBuffer_IN" requiredType="//@itemTypes.0"/>
     </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <components xsi:type="at.ac.tuwien.big.stl:Buffer" name="GenBuffer">
-      <outputSlots/>
-      <inputSlots/>
-    </components>
-    <connectors entry="//@areas.2/@components.14/@outputSlots.0" exit="//@areas.2/@components.3/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.8/@outputSlots.0" exit="//@areas.2/@components.3/@inputSlots.0"/>
     <connectors entry="//@areas.2/@components.3/@outputSlots.0" exit="//@areas.2/@components.4/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.4/@outputSlots.0" exit="//@areas.2/@components.11/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.5/@outputSlots.0" exit="//@areas.2/@components.10/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.6/@outputSlots.0" exit="//@areas.2/@components.9/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.7/@outputSlots.0" exit="//@areas.2/@components.8/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.1/@outputSlots.0" exit="//@areas.2/@components.14/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.1/@outputSlots.1" exit="//@areas.2/@components.13/@inputSlots.0"/>
-    <connectors entry="//@areas.2/@components.2/@outputSlots.0" exit="//@areas.2/@components.12/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.4/@outputSlots.0" exit="//@areas.2/@components.5/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.5/@outputSlots.0" exit="//@areas.2/@components.6/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.6/@outputSlots.0" exit="//@areas.2/@components.7/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.7/@outputSlots.0" exit="//@areas.2/@components.1/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.9/@outputSlots.0" exit="//@areas.1/@components.1/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.1/@outputSlots.1" exit="//@areas.2/@components.2/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.2/@outputSlots.0" exit="//@areas.2/@components.0/@inputSlots.1"/>
+    <connectors entry="//@areas.2/@components.0/@outputSlots.0" exit="//@areas.2/@components.8/@inputSlots.0"/>
+    <connectors entry="//@areas.2/@components.1/@outputSlots.0" exit="//@areas.2/@components.9/@inputSlots.0"/>
   </areas>
   <itemTypes name="DummyWoodItem" description="Log of wood simulating items processed by this production line."/>
 </at.ac.tuwien.big.stl:System>

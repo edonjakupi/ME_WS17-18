@@ -16,6 +16,7 @@ import at.ac.tuwien.big.stl.Component;
 import at.ac.tuwien.big.stl.ProductStore;
 import at.ac.tuwien.big.stl.Store;
 import at.ac.tuwien.big.stl.WasteStore;
+import at.ac.tuwien.big.stl.simulation.ComponentInfo;
 import at.ac.tuwien.big.stl.simulation.ConnectorInfo;
 import at.ac.tuwien.big.stl.simulation.ItemInfo;
 import at.ac.tuwien.big.stl.simulation.STLSimulationPackage;
@@ -101,7 +102,22 @@ public class StoreInfoImpl extends ComponentInfoImpl implements StoreInfo {
 	 */
 	private boolean process(WasteStore comp) {
 		// TODO 
-		throw new UnsupportedOperationException("Operation not implemented yet");
+		
+		for (ConnectorInfo inCon : getInputConnectors()) {
+			ItemInfo curItem = inCon.getItem();
+			if (curItem != null) {
+				if (getStoredItems().size() < ((Store) getComponent()).getCapacity()) {
+					
+					getStoredItems().add(curItem);
+					
+					setUseTime(getUseTime() + getProcessingTime());
+					
+					inCon.setItem(null);
+				}
+			}
+		}
+		
+		return true;
 	}
 
 	private boolean process(ProductStore comp) {

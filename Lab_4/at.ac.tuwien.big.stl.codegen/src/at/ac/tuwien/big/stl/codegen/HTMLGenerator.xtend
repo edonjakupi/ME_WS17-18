@@ -90,7 +90,7 @@ class HTMLGenerator implements IGenerator {
 											<dt>Type</dt>
 											<dd class="visible device-type">«c.eClass.name»</dd>
 											<dt class="visible">Utilization</dt>
-											<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+											<dd id="device_«c.name.toAlphaNumerical»_utilisation" class="visible device-utilisation">0<dd>
 											«IF c.eClass.name.equals("Buffer") || c.eClass.name.equals("ProductStore") || c.eClass.name.equals("WasteStore")»
 												<dt class="visible">Elements</dt>
 												<dd id="device_«c.name.toAlphaNumerical»_elements" class="visible device-utilisation">0<dd>

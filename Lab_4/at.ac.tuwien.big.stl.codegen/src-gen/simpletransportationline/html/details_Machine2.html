@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>BIG Smart Production Control Panel - Details Machine2</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles/style.css">
+	<script src="script/chart.bundle.js"></script>
+	<script src="script/moment.min.js" ></script>
+	<script src="script/jquery-3.2.1.js" ></script>
+	<script src="script/connect.js" ></script>
+	<script type="text/javascript">
+		$(function() {
+			createChart();
+			getTotalStatus();
+			webSocket("Machine2","Machine2");
+		});
+	</script>
+</head>
+<body>
+	<header aria-labelledby="bannerheadline">
+		<a href="index.html"><img class="title-image" src="images/big-logo-small.png" alt="BIG Smart Production logo"></a>
+		<h1 class="header-title" id="bannerheadline">BIG Smart Production Control Panel</h1>
+		<nav aria-labelledby="navigationheadline">
+			<h2 class="accessibility" id="navigationheadline">Navigation</h2>
+			<ul class="navigation-list">
+				<li class="nav-items">
+					<ul>
+						<li><a href="#" onclick="restartSimulation()" class="button" accesskey="2">Start</a></li>
+					</ul>
+				</li>
+	 		</ul>
+		</nav>
+	</header>
+	<div class="main-container">
+		<main aria-labelledby="deviceheadline" class="details-container">
+			<div class="details-headline">
+				<h2 class="main-headline" id="deviceheadline">Machine2</h2>
+			</div>
+			<div class="details-holder">
+				<div class="details-outer">
+					<div class="details-image-container">
+						<canvas id="utilisationChart" width="500" height="200" />
+					</div>
+					<div class="device-kpi">
+						<dl class="properties">
+							<dd>Cost: </dd>
+							<dt>5.000 €</dt>
+							<dd>Production time: </dd>
+							<dt>20 s</dt>
+							<dd>Error-rate: </dd>
+							<dt>0 %</dt>
+							<dd>Average Utilization: </dd>
+							<dt id="device_Machine2_utilisation">0 %</dt>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer>
+		© 2017 BIG Smart Home
+	</footer>
+</body>
+</html>

@@ -22,25 +22,25 @@ class ServerGenerator implements IGenerator {
 			// TODO generate the server class; consider the helpers defined below
 			fsa.generateFile('''«system.name.toAlphaNumerical.toLowerCase»/server/«system.name.toAlphaNumerical»Server.java''',
 			'''
-				package «system.name.toAlphaNumerical.toLowerCase».server;
+			package «system.name.toAlphaNumerical.toLowerCase».server;
+			
+			import java.io.File;
+			import java.io.IOException;
 				
-				import java.io.File;
-				import java.io.IOException;
+			import at.ac.tuwien.big.stl.codegen.lib.server.Server.SimpleServer;
+			import at.ac.tuwien.big.stl.codegen.lib.util.ModelLoader;
+			import at.ac.tuwien.big.stl.simulation.SimulationModel;
 				
-				import at.ac.tuwien.big.stl.codegen.lib.server.Server.SimpleServer;
-				import at.ac.tuwien.big.stl.codegen.lib.util.ModelLoader;
-				import at.ac.tuwien.big.stl.simulation.SimulationModel;
-				
-				public class «system.name.toAlphaNumerical»Server {
+			public class «system.name.toAlphaNumerical»Server {
 					
-					public static void main(String[] args) throws IOException {
-						SimulationModel simModel = ModelLoader.load("«getPath(simModel)»");
-						File outputDir = new File("«mweOutputDir»/«system.name.toAlphaNumerical.toLowerCase»/html");
-						SimpleServer server = new SimpleServer(simModel, null, «port», outputDir, false);
-						server.configSimulatorAndRun();
-						server.start();
-					}
+				public static void main(String[] args) throws IOException {
+					SimulationModel simModel = ModelLoader.load("«getPath(simModel)»");
+					File outputDir = new File("«mweOutputDir»/«system.name.toAlphaNumerical.toLowerCase»/html");
+					SimpleServer server = new SimpleServer(simModel, null, «port», outputDir, false);
+					server.configSimulatorAndRun();
+					server.start();
 				}
+			}
 			''');
 		}
 	}

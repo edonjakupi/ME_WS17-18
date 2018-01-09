@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>BIG Smart Production Control Panel - Components</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<script src="script/jquery-3.2.1.js" ></script>
+	<script src="script/connect.js" ></script>
+	<script type="text/javascript">
+		$(function() {
+			getTotalStatus();
+			webSocket(null);
+		});
+	</script>
+</head>
+<body>
+	<header aria-labelledby="bannerheadline">
+		<a href="index.html"><img class="title-image" src="images/big-logo-small.png" alt="BIG Smart Production logo"></a>
+		<h1 class="header-title" id="bannerheadline">BIG Smart Production Control Panel</h1>  
+		<nav>
+	    	<ul class="navigation-list">
+	    		<li class="nav-items">
+	        		<ul>
+	        			<li><a href="#" onclick="restartSimulation()" class="button" accesskey="2">Start</a></li>
+	        		</ul>
+	      		</li>
+	      	</ul>
+		</nav>  
+	</header>
+	<div class="main-container">
+		<aside class="sidebar" aria-labelledby="serverinfoheadline">
+			<div class="production-info-container">
+				<h2 class="accessibility" id="serverinfoheadline">Production Status</h2>
+				<dl class="production-data properties">
+					<dt class="accessibility">Production status:</dt>
+					<dd class="production-status">Production status:</dd>
+					<dt>System Costs</dt>
+					<dd>
+						<span>14.200 €</span>
+					</dd>
+					<dt>Finished Products</dt>
+					<dd>
+						<span id="status_produced">0</span>
+					</dd>
+				</dl>
+			</div>
+		</aside>
+
+		<main aria-labelledby="devicesheadline">
+			<h2 class="main-headline" id="devicesheadline">Components</h2>
+			<h3>SampleArea</h3>
+			<div class="devices">
+			<div class="device-outer">
+				<a href="details_CheapPrinter1.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/itemgenerator.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">CheapPrinter1</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ItemGenerator</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_CheapPrinter2.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/itemgenerator.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">CheapPrinter2</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ItemGenerator</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_CheapMachine.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/machine.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">CheapMachine</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Machine</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Turntable1.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/turntable.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Turntable1</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">TurnTable</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_WasteStore.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/wastestore.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">WasteStore</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">WasteStore</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_WasteStore_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_ProductStore.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/productstore.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">ProductStore</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ProductStore</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_ProductStore_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Conveyor1.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/conveyor.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Conveyor1</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Conveyor</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Conveyor2.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/conveyor.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Conveyor2</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Conveyor</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_TurnTable2.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/turntable.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">TurnTable2</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">TurnTable</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Printer1.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/itemgenerator.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Printer1</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ItemGenerator</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Printer2.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/itemgenerator.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Printer2</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ItemGenerator</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Buffer.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/buffer.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Buffer</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Buffer</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_Buffer_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Machine2.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/machine.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Machine2</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Machine</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			</div>
+		</main>
+	</div>
+	<footer>
+	  © 2017 BIG Smart Production
+	</footer>
+</body>

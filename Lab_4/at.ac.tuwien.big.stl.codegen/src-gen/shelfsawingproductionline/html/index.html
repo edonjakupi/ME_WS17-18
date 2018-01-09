@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>BIG Smart Production Control Panel - Components</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<script src="script/jquery-3.2.1.js" ></script>
+	<script src="script/connect.js" ></script>
+	<script type="text/javascript">
+		$(function() {
+			getTotalStatus();
+			webSocket(null);
+		});
+	</script>
+</head>
+<body>
+	<header aria-labelledby="bannerheadline">
+		<a href="index.html"><img class="title-image" src="images/big-logo-small.png" alt="BIG Smart Production logo"></a>
+		<h1 class="header-title" id="bannerheadline">BIG Smart Production Control Panel</h1>  
+		<nav>
+	    	<ul class="navigation-list">
+	    		<li class="nav-items">
+	        		<ul>
+	        			<li><a href="#" onclick="restartSimulation()" class="button" accesskey="2">Start</a></li>
+	        		</ul>
+	      		</li>
+	      	</ul>
+		</nav>  
+	</header>
+	<div class="main-container">
+		<aside class="sidebar" aria-labelledby="serverinfoheadline">
+			<div class="production-info-container">
+				<h2 class="accessibility" id="serverinfoheadline">Production Status</h2>
+				<dl class="production-data properties">
+					<dt class="accessibility">Production status:</dt>
+					<dd class="production-status">Production status:</dd>
+					<dt>System Costs</dt>
+					<dd>
+						<span>4.800 €</span>
+					</dd>
+					<dt>Finished Products</dt>
+					<dd>
+						<span id="status_produced">0</span>
+					</dd>
+				</dl>
+			</div>
+		</aside>
+
+		<main aria-labelledby="devicesheadline">
+			<h2 class="main-headline" id="devicesheadline">Components</h2>
+			<h3>Production Area</h3>
+			<div class="devices">
+			<div class="device-outer">
+				<a href="details_RawShelfProducer.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/itemgenerator.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Raw Shelf Producer</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ItemGenerator</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_ToBufferConveyor.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/conveyor.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">To-Buffer Conveyor</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Conveyor</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_Buffer.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/buffer.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Buffer</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Buffer</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_Buffer_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_SawingMachine.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/machine.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Sawing Machine</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Machine</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_ToShelfStoreConveyor.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/conveyor.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">To-Shelf-Store Conveyor</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Conveyor</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_ToWasteStoreConveyor.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/conveyor.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">To-Waste-Store Conveyor</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">Conveyor</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_TurnTable.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/turntable.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Turn Table</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">TurnTable</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			</div>
+			<h3>Store Area</h3>
+			<div class="devices">
+			<div class="device-outer">
+				<a href="details_ShelfStore.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/productstore.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Shelf Store</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">ProductStore</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_ShelfStore_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			<div class="device-outer">
+				<a href="details_WoodWasteStore.html" class="device" title="More information about this component">
+					<div class="device-image-container">
+						<img class="device-image" width="180" height="180" src="images/wastestore.png" alt="Component image">
+					</div>
+					<dl class="device-properties">
+						<dt>Name</dt>
+						<dd class="device-displayname">Wood Waste Store</dd>
+						<dt>Type</dt>
+						<dd class="visible device-type">WasteStore</dd>
+						<dt class="visible">Utilization</dt>
+						<dd id="device_RawShelfProducer_utilisation" class="visible device-utilisation">0<dd>
+						<dt class="visible">Elements</dt>
+						<dd id="device_WoodWasteStore_elements" class="visible device-utilisation">0<dd>
+					</dl>
+				</a>
+			</div>
+		</main>
+	</div>
+	<footer>
+	  © 2017 BIG Smart Production
+	</footer>
+</body>
